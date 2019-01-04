@@ -1,0 +1,176 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title>Test_MDP_separate_HTML-CSS-Script</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
+    <link rel="stylesheet" href="style.css">
+    
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script type="text/javascript" src="script.js"></script>
+</head>
+<body>
+    <div class="container-fluid container-main">
+        <div class="container-header">
+            <div class="row">
+                <div class="col-md-9 col-xs-10 header-strip">
+                    <ul>
+                        <li><a href"#" class="tab-button" role="tab">Iste Natus</a></li>
+                        <li><a href"#" class="tab-button" role="tab">Explicabo</a></li>
+                        <li><a href"#" class="tab-button" role="tab">Omnis</a></li>
+                        <li><a href"#" class="tab-button" role="tab">Ipsa quae</a></li>
+                        <li class="active"><a href"#" class="tab-button" role="tab">Perspiciatis Unde</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-3 col-xs-2">
+                    <div id="header-strip-right-menu">
+                        <a href="#">Veris Veritatis <i class="fas fa-chevron-down" style="color:white; font-size:70%;"></i></a>
+                        <div id="login-img">Z</div>
+                    </div>
+                </div>
+            </div>
+            <div class="header-menu">
+                <table>
+                    <tr>
+                        <td class="menu-s1">
+                            Sunt
+                        </td>
+                        <td class="menu-s2">
+                            <span class="fas fa-chevron-circle-down header-menu-icon"></span>
+                            <br />Beatae Vita
+                        </td>
+                        <td class="menu-s3">
+                            Doloremque laudantium otam Doloremque laudantium otam
+                        </td>
+                        <td class="menu-s4"></td>
+                        <td class="menu-s5a" style="border-right:none;">
+                            <button onclick="clickArchieto()">
+                                <span class="fas fa-trash header-menu-icon"></span>
+                                <br />Archieto
+                            </button>
+                        </td>
+                        <td class="menu-s5b" style="border-left:none; border-right:none;">
+                            <span>
+                                <label class="switch" style="margin-left:10px;">
+                                    <input type="checkbox">
+                                    <span class="slider round"></span>
+                                </label>
+                            </span>
+                            <br />Aperiam
+                        </td>
+                        <td class="menu-s5c" style="border-left:none; border-right:none;">
+                            <span>
+                                <label class="switch">
+                                    <input type="checkbox" checked>
+                                    <span class="slider round"></span>
+                                </label>
+                            </span>
+                            <br />Totam
+                        </td>
+                        <td class="menu-s5d" style="border-left:none; border-right:none;">
+                            <button onclick="clickRem()">
+                                <span class="fas fa-envelope header-menu-icon">
+                                </span>
+                                <br />Rem
+                            </button>
+                        </td>
+                        <td class="menu-s6"></td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+        <!--
+        Content
+         -->
+        <div class="container-content">
+            <!--
+            Perspiciatis Unde page content
+               -->
+            <div class="tab-content" id="PerspiciatisUnde">
+                <h2><span class="fa fa-check" style="font-size:90%;"></span> CSed ut perspiciatis unde</h2>
+                <h4>
+                    Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium,
+                    totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae
+                    dicta sunt explicabo.
+                </h4>
+                <div class="content-list-block">
+                    <div class="content-list-type-1">
+                        <ul>
+                            <li>Otam rem aperiam</li>
+                            <li>Ipsa quae</li>
+                            <li>Unde omnis</li>
+                            <li>Voluptatem (duvrnem)</li>
+                        </ul>
+                        <ul>
+                            <li>Totam</li>
+                            <li>Iste Natus</li>
+                            <li>Omnis Iste Natus Erro</li>
+                            <li>Explicabo</li>
+                        </ul>
+                    </div>
+                    <div class="content-list-type-2">
+                        <ul class="list-unstyled">
+                            <li>Perspiciatis Unde</li>
+                            <li>Architecto beatae vitae</li>
+                            <li>Perspiciatis Unde</li>
+                            <li>Architecto beatae vitae</li>
+                        </ul>
+                        <ul class="list-unstyled">
+                            <li>5.0</li>
+                            <li>Omnis iste natus</li>
+                            <li>Accusantium doloremque laudant</li>
+                            <li>Accusantium dolor</li>
+                        </ul>
+                    </div>
+                    <div class="content-list-type-3">
+                        <ul class="list-unstyled">
+                            <li><br /></li>
+                            <li><br /></li>
+                            <li><br /></li>
+                            <li>architecto beatae vitae</li>
+                        </ul>
+                        <ul class="list-unstyled">
+                            <li></li>
+                            <li></li>
+                            <li></li>
+                            <li></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="tab-content-panel">
+                    <div class="tab-content-panel-header">
+                        <p id="tab-header-item1">Perspiciatis Unde</p>
+                        <p id="tab-header-item2">Accusantium doloremque laudant</p>
+                        <p id="tab-header-item3">Voluptatem (duvrnem)</p>
+                    </div>
+                    <div class="tab-content-panel-separator">
+                        <hr />
+                    </div>
+                    <div class="tab-content-panel-main">
+                        <p class="panel-main-item1">Iste Natus</p>
+                        <p>
+                            <div class="panel-dropdown-menu">
+                                <select>
+                                    <option value="0">
+                                        Accusantium doloremque laudant
+                                    </option>
+                                    <option value="1">Architecto beatae vitae</option>
+                                    <option value="2">Architecto beatae vitae</option>
+                                    <option value="3">Architecto beatae vitae</option>
+                                    <option value="4">Architecto beatae vitae</option>
+                                    <option value="5">Architecto beatae vitae</option>
+                                    <option value="6">Architecto beatae vitae</option>
+                                    <option value="7">Architecto beatae vitae</option>
+                                </select>
+                            </div>
+                        </p>
+                        <p class="panel-main-item3">Unde Omnis</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
