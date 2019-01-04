@@ -5,4 +5,4 @@ Notes on Files:
 There are two versions of the test recreation included in the repositary.
 
 1.  Separated version: HTML, CSS and JS are set up in separate files. Open - Test2_html-separate.html
-2.  Combined version - all html, css and js are within the same file. Open - Test3_
+2.  Combined version - all html, css and js are within the same file. Open - Test3_all-in-one.html
