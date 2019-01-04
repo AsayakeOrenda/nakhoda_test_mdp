@@ -1,0 +1,768 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title>Test_MDP_All-in-One-File_v2</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+</head>
+<body>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
+
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            var x, i, j, selElmnt, a, b, c;
+            /* Look for any elements with the class "panel-dropdown-menu": */
+            x = document.getElementsByClassName("panel-dropdown-menu");
+            for (i = 0; i < x.length; i++) {
+                selElmnt = x[i].getElementsByTagName("select")[0];
+                /* For each element, create a new DIV that will act as the selected item: */
+                a = document.createElement("DIV");
+                a.setAttribute("class", "select-selected");
+                a.innerHTML = selElmnt.options[selElmnt.selectedIndex].innerHTML;
+                x[i].appendChild(a);
+                /* For each element, create a new DIV that will contain the option list: */
+                b = document.createElement("DIV");
+                b.setAttribute("class", "select-items select-hide");
+                for (j = 1; j < selElmnt.length; j++) {
+                    /* For each option in the original select element,
+                    create a new DIV that will act as an option item: */
+                    c = document.createElement("DIV");
+                    c.innerHTML = selElmnt.options[j].innerHTML;
+                    c.addEventListener("click", function (e) {
+                        /* When an item is clicked, update the original select box,
+                        and the selected item: */
+                        var y, i, k, s, h;
+                        s = this.parentNode.parentNode.getElementsByTagName("select")[0];
+                        h = this.parentNode.previousSibling;
+                        for (i = 0; i < s.length; i++) {
+                            if (s.options[i].innerHTML == this.innerHTML) {
+                                s.selectedIndex = i;
+                                h.innerHTML = this.innerHTML;
+                                y = this.parentNode.getElementsByClassName("same-as-selected");
+                                for (k = 0; k < y.length; k++) {
+                                    y[k].removeAttribute("class");
+                                }
+                                this.setAttribute("class", "same-as-selected");
+                                break;
+                            }
+                        }
+                        h.click();
+                    });
+                    b.appendChild(c);
+                }
+                x[i].appendChild(b);
+                a.addEventListener("click", function (e) {
+                    /* When the select box is clicked, close any other select boxes,
+                    and open/close the current select box: */
+                    e.stopPropagation();
+                    closeAllSelect(this);
+                    this.nextSibling.classList.toggle("select-hide");
+                    this.classList.toggle("select-arrow-active");
+                });
+            }
+
+            function closeAllSelect(elmnt) {
+                /* A function that will close all select boxes in the document,
+                except the current select box: */
+                var x, y, i, arrNo = [];
+                x = document.getElementsByClassName("select-items");
+                y = document.getElementsByClassName("select-selected");
+                for (i = 0; i < y.length; i++) {
+                    if (elmnt == y[i]) {
+                        arrNo.push(i)
+                    } else {
+                        y[i].classList.remove("select-arrow-active");
+                    }
+                }
+                for (i = 0; i < x.length; i++) {
+                    if (arrNo.indexOf(i)) {
+                        x[i].classList.add("select-hide");
+                    }
+                }
+            }
+            /* If the user clicks anywhere outside the select box,
+            then close all select boxes: */
+            document.addEventListener("click", closeAllSelect);
+        });
+
+        /*Button actions*/
+        $(document).ready(() => {
+            clickArchieto = () => {
+                window.alert("Clicked Archieto");
+            }
+            clickRem = () => {
+                window.alert("Clicked Rem");
+            }
+        });
+    </script>
+    <style>
+        * {
+            margin: 0px;
+            padding: 0px;
+            box-sizing: border-box;
+        }
+
+        /*Containers*/
+        .container-main {
+            background: #0e0e0e;
+            height: 100%;
+            font-family: sans-serif;
+            /*Color palette*/
+            --color-bg-primary: rgb(33,33,33,1);
+            --color-bg-secondary: rgb(36,36,36,0.9);
+            --color-bg-accent: #171717;
+            --color-bg-shadow: #191919;
+            --color-h-accent: #ffffff;
+            --color-h-primary: #deae54;
+            --color-h-secondary: #af8376;
+            --color-tx-default: #525252;
+            --color-tx-primary: #c2c2c2;
+            --color-tx-secondary: #6c6c6c;
+            --color-tx-accent: #eaeaea;
+            --color-icon-main: #9b9b9b;
+            --color-ddmenu-main: rgb(21,21,21,0.9);
+            --color-ddmenu-item: rgb(36,36,36,0.8);
+            --color-ddmenu-hover: rgb(27,27,27,0.9);
+        }
+
+        .container-header {
+            max-width: 1556px;
+            margin: 0 auto;
+            background-color: var(--color-bg-accent, #171717);
+            color: var(--color-h-accent, #ffffff);
+        }
+
+        .container-content {
+            max-width: 1556px;
+            min-height: 80vh;
+            margin: 0 auto;
+            padding: 20px 0px 200px 0px;
+            /*margin-top: -20px;*/
+            height: 100%;
+            background-color: var(--color-bg-primary, #232323);
+            color: var(--color-h-accent, #ffffff);
+            -webkit-box-shadow: inset 1px 13px 30px -12px var(--color-bg-accent, #171717);
+            -moz-box-shadow: inset 1px 13px 30px -12px var(--color-bg-accent, #171717);
+            box-shadow: inset 1px 13px 30px -12px var(--color-bg-accent, #171717);
+        }
+
+        /*Header Styling*/
+        .header-strip {
+            font-size: 120%;
+        }
+
+        .header-strip ul li {
+            padding: 5px 8px 0px 30px;
+            display: inline;
+            list-style: unstyled;
+        }
+
+        /*overwrite bootstrap link styles*/
+        .header-strip:link, .header-strip a:visited,
+        .header-strip a:focus {
+            color: var(--color-h-accent, #ffffff);
+            text-decoration: none;
+            cursor: pointer;
+        }
+
+        .tab-button {
+            color: var(--color-h-accent, #ffffff);
+            text-decoration: none;
+            cursor: pointer;
+        }
+
+        .tab-button:hover {
+            color: var(--color-icon-main, #9b9b9b);
+            text-decoration: none;
+            cursor: pointer;
+        }
+
+        .active a {
+            color: var(--color-h-primary, #deae54);
+        }
+
+        #header-strip-right-menu {
+            position: absolute;
+            top: 5px;
+            right: 50px;
+        }
+
+        #header-strip-right-menu a:link, #header-strip-right-menu a:visited,
+        #header-strip-right-menu a:hover, #header-strip-right-menu a:active,
+        #header-strip-right-menu a:focus {
+            color: var(--color-tx-secondary,#6c6c6c);
+            text-decoration: none;
+        }
+
+        #login-img {
+            display: inline-block;
+            width: 25px;
+            height: 25px;
+            border-radius: 50%;
+            background-color: var(--color-tx-default, #525252);
+            color: var(--color-h-accent, #ffffff);
+            text-align: center;
+            font-size: 16px;
+            padding-top: 2px;
+            margin-left: 100px;
+        }
+
+        /*header menu bar*/
+        .header-menu {
+            background-color: var(--color-bg-secondary, rgb(36,36,36,0.8));
+            color: var(--color-tx-secondary, #6c6c6c, #ffffff);
+            margin: 1px;
+            font-size: 14px;
+            -webkit-box-shadow: -1px 4px 5px -2px rgba(35,35,35,0.8);
+            -moz-box-shadow: -1px 4px 5px -2px rgba(35,35,35,0.8);
+            box-shadow: -1px 4px 5px -2px rgba(35,35,35,0.8);
+        }
+
+        .header-menu table {
+            width: 100%;
+            height: 80px;
+            border-collapse: collapse;
+            border: none;
+        }
+
+        .header-menu tr td {
+            border: 0.5px solid var(--color-bg-accent,#171717);
+            border-collapse: collapse;
+            text-align: center;
+        }
+
+        .header-menu-icon {
+            font-size: 150%;
+            color: var(--color-tx-default, #525252);
+            margin-bottom: 3px;
+        }
+
+        /*Overwrite default html button styling -- note future generic buttons may need  own class for styling*/
+        button, input[type="submit"], input[type="reset"] {
+            background: none;
+            color: inherit;
+            border: none;
+            padding: 0;
+            font: inherit;
+            cursor: pointer;
+            outline: inherit;
+        }
+
+        /*Styling individual header sections*/
+        /*1st Section Styling (Sunt)*/
+        .menu-s1 {
+            color: var(--color-h-secondary, #af8376);
+            width: 70px;
+            font-size: 18px;
+            font-weight: 100;
+        }
+        /*2nd Section Styling (Beatae Vita)*/
+        .menu-s2 {
+            width: 110px;
+        }
+        /*3rd Section Styling (Doloremque...)*/
+        .menu-s3 {
+            width: 585px;
+            font-size: 16px;
+            font-weight: bold;
+        }
+        /*4th Section Styling (empty1...)*/
+        .menu-s4 {
+            width: 275px;
+        }
+        /*5th-a Section Styling (Archieto)*/
+        .menu-s5a {
+            /*No individual class styling*/
+        }
+        /*5th-b Section Styling (Aperiam)*/
+        .menu-s5b {
+            width: 6%;
+        }
+        /*5th-c Section Styling (Totam)*/
+        .menu-s5c {
+            width: 4%;
+        }
+        /*5th-d Section Styling (Rem)*/
+        .menu-s5d {
+            width: 5%;
+        }
+        /*6th Section Styling (empty2...)*/
+        .menu-s6 {
+            width: 188px;
+        }
+
+        /*Toggle-Switch Stying*/
+        .switch {
+            position: relative;
+            display: inline-block;
+            width: 25px;
+            height: 12px;
+            margin-top: 2px;
+            margin-bottom: 10px;
+        }
+
+        .switch input {
+            opacity: 0;
+            width: 0;
+            height: 0;
+        }
+
+        .slider {
+            position: absolute;
+            cursor: pointer;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: var(--color-tx-default, #525252);
+            -webkit-transition: .4s;
+            transition: .4s;
+        }
+
+        .slider:before {
+            position: absolute;
+            content: "";
+            height: 12px;
+            width: 12px;
+            left: 0px;
+            bottom: 0px;
+            background-color: var(--color-icon-main, #9b9b9b);
+            -webkit-transition: .4s;
+            transition: .4s;
+        }
+
+        input:checked + .slider {
+            background-color: var(--color-tx-default, #525252);
+        }
+
+        input:checked + .slider:before {
+            -webkit-transform: translateX(15px);
+            -ms-transform: translateX(15px);
+            transform: translateX(15px);
+        }
+
+        .slider.round {
+            border-radius: 34px;
+        }
+
+        .slider.round:before {
+            border-radius: 50%;
+        }
+
+        /* Tab Content Styling */
+        .tab-content {
+            width: 70%;
+            margin: 0 auto;
+        }
+
+        .tab-content h2 {
+            font-weight: 300;
+            letter-spacing: 1px;
+            color: var(--color-h-primary, #deae54);
+            margin-bottom: 15px;
+        }
+
+        .tab-content h4 {
+            font-size: 125%;
+            font-weight: 300;
+            letter-spacing: 1px;
+            color: var(--color-tx-primary, #c2c2c2);
+            line-height: 1.4;
+            margin: 10px 0px;
+        }
+
+        .content-list-block {
+            display: block;
+            position: relative;
+        }
+
+        .content-list-block ul {
+            font-size: 120%;
+            margin: 40px 0px;
+            list-style: none;
+        }
+
+        .content-list-block li {
+            margin-top: 5px;
+        }
+
+        .content-list-block li:first-child {
+            margin-top: 0;
+        }
+
+        .content-list-type-1 {
+            font-weight: normal;
+            color: var(--color-tx-primary, #c2c2c2);
+            display: inline-block;
+        }
+
+        .content-list-type-2 {
+            font-weight: bold;
+            color: var(--color-tx-primary, #c2c2c2);
+            display: inline-block;
+            position: absolute;
+            left: 28%;
+            height: 100%;
+        }
+
+        .content-list-type-3 {
+            color: var(--color-tx-accent, #eaeaea);
+            display: inline-block;
+            position: absolute;
+            left: 55%;
+            height: 100%;
+        }
+
+        /*Tab content PANEL styling*/
+        .tab-content-panel {
+            background-color: var(--color-bg-secondary, rgb(36,36,36,0.8));
+            border-radius: 30px;
+            position: relative;
+            -webkit-box-shadow: 0px 0px 75px -5px var(--color-bg-shadow, #191919);
+            -moz-box-shadow: 0px 0px 75px -5px var(--color-bg-shadow, #191919);
+            box-shadow: 0px 0px 75px -5px var(--color-bg-shadow, #191919);
+            height: 160px;
+            z-index: 1;
+            font-size: 16px;
+            margin: 15px 0px;
+        }
+
+        .tab-content-panel-header {
+            position: absolute;
+            display: block;
+            top: 10px;
+            left: 16px;
+            right: 16px;
+            z-index: 3;
+            padding: 0 20px;
+        }
+
+        .tab-content-panel-header p {
+            display: inline-block;
+            margin: 0;
+            padding: 0;
+        }
+
+        #tab-header-item1 {
+            color: var(--color-h-secondary, #af8376);
+        }
+
+        #tab-header-item2 {
+            position: relative;
+            color: var(--color-h-primary, #deae54);
+            font-weight: bold;
+            margin: 0px 25px 0px 105px;
+            padding: 0 0px 10px 0px;
+        }
+
+        #tab-header-item2:before {
+            content: "";
+            position: absolute;
+            height: 1px;
+            bottom: 0;
+            left: 24%;
+            right: 34%;
+            border-bottom: 3px solid var(--color-h-primary, #deae54);
+            border-radius: 20%;
+        }
+
+        #tab-header-item3 {
+            color: var(--color-icon-main,#9b9b9b);
+            font-weight: bold;
+        }
+
+        .tab-content-panel-separator {
+            position: absolute;
+            display: block;
+            top: 20px;
+            left: 0px;
+            right: 0px;
+            z-index: 2;
+        }
+
+        .tab-content-panel-separator hr {
+            display: block;
+            height: 1px;
+            border: 0;
+            border-top: 1px solid var(--color-bg-accent,#171717);
+        }
+
+        .tab-content-panel-main {
+            position: absolute;
+            display: block;
+            bottom: 35px;
+            left: 30px;
+            right: 30px;
+            z-index: 3;
+            padding: 5px 2px;
+        }
+
+        .tab-content-panel-main p {
+            display: inline-block;
+            margin: 0;
+            padding: 0 6px;
+        }
+
+        .panel-main-item1 {
+            color: var(--color-h-secondary, #af8376);
+        }
+
+        .panel-main-item3 {
+            color: var(--color-h-primary, #deae54);
+            font-weight: bold;
+        }
+
+        /* Panel Dropdown Menu */
+        .panel-dropdown-menu {
+            position: relative;
+            display: inline-block;
+            width: 390px;
+            color: var(--color-tx-primary,#c2c2c2);
+        }
+
+            .panel-dropdown-menu select {
+                display: none; /*hide original SELECT element: */
+            }
+
+        /*style menu item*/
+        .select-selected {
+            background-color: var(--color-ddmenu-main, rgb(21,21,21,0.9));
+            border: 1px solid var(--color-bg-accent,#171717);
+            border-top-right-radius: 20px;
+            border-top-left-radius: 20px;
+            padding: 5px 10px 5px 15px;
+            cursor: pointer;
+            -webkit-box-shadow: 0px 1px 10px -2px var(--color-bg-accent,#171717);
+            -moz-box-shadow: 0px 1px 10px -2px var(--color-bg-accent,#171717);
+            box-shadow: 0px 1px 10px -2px var(--color-bg-accent,#171717);
+            letter-spacing: 1px;
+        }
+
+        /* Style chevron (before): */
+        .select-selected:after {
+            content: "\f078";
+            font-family: "Font Awesome 5 Free";
+            font-weight: 900;
+            font-size: 18px;
+            color: var(--color-icon-main, #9b9b9b);
+            position: absolute;
+            top: 5px;
+            right: 15px;
+        }
+
+        /* Change chevron direction (active): */
+        .select-selected.select-arrow-active:before {
+            content: " ";
+        }
+
+        .select-selected.select-arrow-active:after {
+            content: "\f077";
+            font-family: "Font Awesome 5 Free";
+            font-weight: 900;
+            position: absolute;
+        }
+
+        /* Style items (options): */
+        .select-items {
+            position: absolute;
+            background-color: var(--color-ddmenu-item,rgb(36,36,36,0.8));
+            border-bottom-left-radius: 20px;
+            border-bottom-right-radius: 20px;
+            top: 100%;
+            left: 0;
+            right: 0;
+            z-index: 99;
+            -webkit-box-shadow: 0px 2px 14px -2px var(--color-bg-accent,#171717);
+            -moz-box-shadow: 0px 2px 14px -2px var(--color-bg-accent,#171717);
+            box-shadow: 0px 2px 14px -2px var(--color-bg-accent,#171717);
+        }
+
+        /* style the items (options): */
+        .select-items div {
+            padding: 5px 10px 5px 15px;
+            border: 1px solid transparent;
+            cursor: pointer;
+            letter-spacing: 1px;
+        }
+
+        /* Hide the items when the select box is closed: */
+        .select-hide {
+            display: none;
+        }
+
+        .select-items div:hover, .same-as-selected {
+            background-color: var(--color-ddmenu-hover,rgb(27,27,27,0.9));
+        }
+
+        .select-items div:hover:nth-child(7) {
+            border-bottom-left-radius: 20px;
+            border-bottom-right-radius: 20px;
+        }
+    </style>
+
+    <div class="container-fluid container-main">
+        <div class="container-header">
+            <div class="row">
+                <div class="col-md-9 col-xs-10 header-strip">
+                    <ul>
+                        <li><a href"#" class="tab-button" role="tab">Iste Natus</a></li>
+                        <li><a href"#" class="tab-button" role="tab">Explicabo</a></li>
+                        <li><a href"#" class="tab-button" role="tab">Omnis</a></li>
+                        <li><a href"#" class="tab-button" role="tab">Ipsa quae</a></li>
+                        <li class="active"><a href"#" class="tab-button" role="tab">Perspiciatis Unde</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-3 col-xs-2">
+                    <div id="header-strip-right-menu">
+                        <a href="#">Veris Veritatis <i class="fas fa-chevron-down" style="color:white; font-size:70%;"></i></a>
+                        <div id="login-img">Z</div>
+                    </div>
+                </div>
+            </div>
+            <div class="header-menu">
+                <table>
+                    <tr>
+                        <td class="menu-s1">
+                            Sunt
+                        </td>
+                        <td class="menu-s2">
+                            <span class="fas fa-chevron-circle-down header-menu-icon"></span>
+                            <br />Beatae Vita
+                        </td>
+                        <td class="menu-s3">
+                            Doloremque laudantium otam Doloremque laudantium otam
+                        </td>
+                        <td class="menu-s4"></td>
+                        <td class="menu-s5a" style="border-right:none;">
+                            <button onclick="clickArchieto()">
+                                <span class="fas fa-trash header-menu-icon"></span>
+                                <br />Archieto
+                            </button>
+                        </td>
+                        <td class="menu-s5b" style="border-left:none; border-right:none;">
+                            <span>
+                                <label class="switch" style="margin-left:10px;">
+                                    <input type="checkbox">
+                                    <span class="slider round"></span>
+                                </label>
+                            </span>
+                            <br />Aperiam
+                        </td>
+                        <td class="menu-s5c" style="border-left:none; border-right:none;">
+                            <span>
+                                <label class="switch">
+                                    <input type="checkbox" checked>
+                                    <span class="slider round"></span>
+                                </label>
+                            </span>
+                            <br />Totam
+                        </td>
+                        <td class="menu-s5d" style="border-left:none; border-right:none;">
+                            <button onclick="clickRem()">
+                                <span class="fas fa-envelope header-menu-icon">
+                                </span>
+                                <br />Rem
+                            </button>
+                        </td>
+                        <td class="menu-s6"></td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+        <!--
+        Content
+         -->
+        <div class="container-content">
+            <!--
+            Perspiciatis Unde page content
+               -->
+            <div class="tab-content" id="PerspiciatisUnde">
+                <h2><span class="fa fa-check" style="font-size:90%;"></span> CSed ut perspiciatis unde</h2>
+                <h4>
+                    Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium,
+                    totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae
+                    dicta sunt explicabo.
+                </h4>
+                <div class="content-list-block">
+                    <div class="content-list-type-1">
+                        <ul>
+                            <li>Otam rem aperiam</li>
+                            <li>Ipsa quae</li>
+                            <li>Unde omnis</li>
+                            <li>Voluptatem (duvrnem)</li>
+                        </ul>
+                        <ul>
+                            <li>Totam</li>
+                            <li>Iste Natus</li>
+                            <li>Omnis Iste Natus Erro</li>
+                            <li>Explicabo</li>
+                        </ul>
+                    </div>
+                    <div class="content-list-type-2">
+                        <ul class="list-unstyled">
+                            <li>Perspiciatis Unde</li>
+                            <li>Architecto beatae vitae</li>
+                            <li>Perspiciatis Unde</li>
+                            <li>Architecto beatae vitae</li>
+                        </ul>
+                        <ul class="list-unstyled">
+                            <li>5.0</li>
+                            <li>Omnis iste natus</li>
+                            <li>Accusantium doloremque laudant</li>
+                            <li>Accusantium dolor</li>
+                        </ul>
+                    </div>
+                    <div class="content-list-type-3">
+                        <ul class="list-unstyled">
+                            <li><br /></li>
+                            <li><br /></li>
+                            <li><br /></li>
+                            <li>architecto beatae vitae</li>
+                        </ul>
+                        <ul class="list-unstyled">
+                            <li></li>
+                            <li></li>
+                            <li></li>
+                            <li></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="tab-content-panel">
+                    <div class="tab-content-panel-header">
+                        <p id="tab-header-item1">Perspiciatis Unde</p>
+                        <p id="tab-header-item2">Accusantium doloremque laudant</p>
+                        <p id="tab-header-item3">Voluptatem (duvrnem)</p>
+                    </div>
+                    <div class="tab-content-panel-separator">
+                        <hr />
+                    </div>
+                    <div class="tab-content-panel-main">
+                        <p class="panel-main-item1">Iste Natus</p>
+                        <p>
+                            <div class="panel-dropdown-menu">
+                                <select>
+                                    <option value="0">
+                                        Accusantium doloremque laudant
+                                    </option>
+                                    <option value="1">Architecto beatae vitae</option>
+                                    <option value="2">Architecto beatae vitae</option>
+                                    <option value="3">Architecto beatae vitae</option>
+                                    <option value="4">Architecto beatae vitae</option>
+                                    <option value="5">Architecto beatae vitae</option>
+                                    <option value="6">Architecto beatae vitae</option>
+                                    <option value="7">Architecto beatae vitae</option>
+                                </select>
+                            </div>
+                        </p>
+                        <p class="panel-main-item3">Unde Omnis</p>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</body>
+</html>
