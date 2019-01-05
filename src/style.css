@@ -1,0 +1,501 @@
+* {
+    margin: 0px;
+    padding: 0px;
+    box-sizing: border-box;
+}
+
+/*Containers*/
+.container-main {
+    background: #0e0e0e;
+    height: 100%;
+    font-family: sans-serif;
+    /*Color palette*/
+    --color-bg-primary: rgb(33,33,33,1);
+    --color-bg-secondary: rgb(36,36,36,0.9);
+    --color-bg-accent: #171717;
+    --color-bg-shadow: #191919;
+    --color-h-accent: #ffffff;
+    --color-h-primary: #deae54;
+    --color-h-secondary: #af8376;
+    --color-tx-default: #525252;
+    --color-tx-primary: #c2c2c2;
+    --color-tx-secondary: #6c6c6c;
+    --color-tx-accent: #eaeaea;
+    --color-icon-main: #9b9b9b;
+    --color-ddmenu-main: rgb(21,21,21,0.9);
+    --color-ddmenu-item: rgb(36,36,36,0.8);
+    --color-ddmenu-hover: rgb(27,27,27,0.9);
+}
+
+.container-header {
+    max-width: 1556px;
+    margin: 0 auto;
+    background-color: var(--color-bg-accent, #171717);
+    color: var(--color-h-accent, #ffffff);
+}
+
+.container-content {
+    max-width: 1556px;
+    min-height: 80vh;
+    margin: 0 auto;
+    padding: 20px 0px 200px 0px;
+    /*margin-top: -20px;*/
+    height: 100%;
+    background-color: var(--color-bg-primary, #232323);
+    color: var(--color-h-accent, #ffffff);
+    -webkit-box-shadow: inset 1px 13px 30px -12px var(--color-bg-accent, #171717);
+    -moz-box-shadow: inset 1px 13px 30px -12px var(--color-bg-accent, #171717);
+    box-shadow: inset 1px 13px 30px -12px var(--color-bg-accent, #171717);
+}
+
+/*Header Styling*/
+.header-strip {
+    font-size: 120%;
+    margin-top: 6px;
+    margin-bottom: -3px;
+}
+
+.header-strip ul li {
+    padding: 5px 8px 0px 30px;
+    display: inline;
+    list-style: unstyled;
+}
+
+/*create header strip menu styles*/
+.tab-button {
+    color: var(--color-h-accent, #ffffff);
+    text-decoration: none;
+    cursor: pointer;
+}
+ .tab-button:hover {
+    color: var(--color-icon-main, #9b9b9b);
+    text-decoration: none;
+    cursor: pointer;
+ }
+
+.active {
+    color: var(--color-h-primary, #deae54);
+}
+
+#header-strip-right-menu {
+    position: absolute;
+    top: 5px;
+    right: 50px;
+}
+
+#header-strip-right-menu,
+#header-strip-right-menu:hover {
+    color: var(--color-tx-secondary,#6c6c6c);
+    text-decoration: none;
+    cursor:pointer;
+}
+
+#login-img {
+    display: inline-block;
+    width: 25px;
+    height: 25px;
+    border-radius: 50%;
+    background-color: var(--color-tx-default, #525252);
+    color: var(--color-h-accent, #ffffff);
+    text-align: center;
+    font-size: 16px;
+    padding-top: 2px;
+    margin-left: 100px;
+}
+
+/*header menu bar*/
+.header-menu {
+    background-color: var(--color-bg-secondary, rgb(36,36,36,0.8));
+    color: var(--color-tx-secondary, #6c6c6c, #ffffff);
+    margin: 1px;
+    font-size: 14px;
+    -webkit-box-shadow: -1px 4px 5px -2px rgba(35,35,35,0.8);
+    -moz-box-shadow: -1px 4px 5px -2px rgba(35,35,35,0.8);
+    box-shadow: -1px 4px 5px -2px rgba(35,35,35,0.8);
+}
+
+.header-menu table {
+    width: 100%;
+    height: 80px;
+    border-collapse: collapse;
+    border: none;
+}
+
+.header-menu tr td {
+    border: 0.5px solid var(--color-bg-accent,#171717);
+    border-collapse: collapse;
+    text-align: center;
+}
+
+.header-menu-icon {
+    font-size: 150%;
+    color: var(--color-tx-default, #525252);
+    margin-bottom: 3px;
+}
+
+/*Overwrite default html button styling -- note future generic buttons may need  own class for styling*/
+button, input[type="submit"], input[type="reset"] {
+    background: none;
+    color: inherit;
+    border: none;
+    padding: 0;
+    font: inherit;
+    cursor: pointer;
+    outline: inherit;
+}
+
+/*Styling individual header sections*/
+/*1st Section Styling (Sunt)*/
+.menu-s1 {
+    color: var(--color-h-secondary, #af8376);
+    width: 70px;
+    font-size: 18px;
+    font-weight: 100;
+}
+/*2nd Section Styling (Beatae Vita)*/
+.menu-s2 {
+    width: 110px;
+}
+/*3rd Section Styling (Doloremque...)*/
+.menu-s3 {
+    width: 585px;
+    font-size: 16px;
+    font-weight: bold;
+}
+/*4th Section Styling (empty1...)*/
+.menu-s4 {
+    width: 275px;
+}
+/*5th-a Section Styling (Archieto)*/
+.menu-s5a {
+    /*No individual class styling*/
+}
+/*5th-b Section Styling (Aperiam)*/
+.menu-s5b {
+    width: 6%;
+}
+/*5th-c Section Styling (Totam)*/
+.menu-s5c {
+    width: 4%;
+}
+/*5th-d Section Styling (Rem)*/
+.menu-s5d {
+    width: 5%;
+}
+/*6th Section Styling (empty2...)*/
+.menu-s6 {
+    width: 188px;
+}
+
+/*React version note:
+If I can get toggle switch working in time then the following section of
+styling can be deleted as the equivalent will be set up in a separate
+toggle styling sheet.
+*/
+/*Toggle-Switch Stying*/
+.switch {
+    position: relative;
+    display: inline-block;
+    width: 25px;
+    height: 12px;
+    margin-top: 2px;
+    margin-bottom: 10px;
+}
+
+.switch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+.slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: var(--color-tx-default, #525252);
+    -webkit-transition: .4s;
+    transition: .4s;
+}
+
+.slider:before {
+    position: absolute;
+    content: "";
+    height: 12px;
+    width: 12px;
+    left: 0px;
+    bottom: 0px;
+    background-color: var(--color-icon-main, #9b9b9b);
+    -webkit-transition: .4s;
+    transition: .4s;
+}
+
+input:checked + .slider {
+    background-color: var(--color-tx-default, #525252);
+}
+
+input:checked + .slider:before {
+    -webkit-transform: translateX(15px);
+    -ms-transform: translateX(15px);
+    transform: translateX(15px);
+}
+
+.slider.round {
+    border-radius: 34px;
+}
+
+.slider.round:before {
+    border-radius: 50%;
+}
+
+/* Tab Content Styling */
+.tab-content {
+    width: 70%;
+    margin: 0 auto;
+}
+
+.tab-content h2 {
+    font-weight: 300;
+    letter-spacing: 1px;
+    color: var(--color-h-primary, #deae54);
+    margin-bottom: 15px;
+}
+
+.tab-content h4 {
+    font-size: 125%;
+    font-weight: 300;
+    letter-spacing: 1px;
+    color: var(--color-tx-primary, #c2c2c2);
+    line-height: 1.4;
+    margin: 10px 0px;
+}
+
+.content-list-block {
+    display: block;
+    position: relative;
+}
+
+.content-list-block ul {
+    font-size: 120%;
+    margin: 40px 0px;
+    list-style: none;
+}
+
+.content-list-block li {
+    margin-top: 5px;
+}
+
+.content-list-block li:first-child {
+    margin-top: 0;
+}
+
+.content-list-type-1 {
+    font-weight: normal;
+    color: var(--color-tx-primary, #c2c2c2);
+    display: inline-block;
+}
+
+.content-list-type-2 {
+    font-weight: bold;
+    color: var(--color-tx-primary, #c2c2c2);
+    display: inline-block;
+    position: absolute;
+    left: 28%;
+    height: 100%;
+}
+
+.content-list-type-3 {
+    color: var(--color-tx-accent, #eaeaea);
+    display: inline-block;
+    position: absolute;
+    left: 55%;
+    height: 100%;
+}
+
+/*Tab content PANEL styling*/
+.tab-content-panel {
+    background-color: var(--color-bg-secondary, rgb(36,36,36,0.8));
+    border-radius: 30px;
+    position: relative;
+    -webkit-box-shadow: 0px 0px 75px -5px var(--color-bg-shadow, #191919);
+    -moz-box-shadow: 0px 0px 75px -5px var(--color-bg-shadow, #191919);
+    box-shadow: 0px 0px 75px -5px var(--color-bg-shadow, #191919);
+    height: 160px;
+    z-index: 1;
+    font-size: 16px;
+    margin: 15px 0px;
+}
+
+.tab-content-panel-header {
+    position: absolute;
+    display: block;
+    top: 10px;
+    left: 16px;
+    right: 16px;
+    z-index: 3;
+    padding: 0 20px;
+}
+
+.tab-content-panel-header p {
+    display: inline-block;
+    margin: 0;
+    padding: 0;
+}
+
+#tab-header-item1 {
+    color: var(--color-h-secondary, #af8376);
+}
+
+#tab-header-item2 {
+    position: relative;
+    color: var(--color-h-primary, #deae54);
+    font-weight: bold;
+    margin: 0px 25px 0px 105px;
+    padding: 0 0px 10px 0px;
+}
+
+#tab-header-item2:before {
+    content: "";
+    position: absolute;
+    height: 1px;
+    bottom: 0;
+    left: 24%;
+    right: 34%;
+    border-bottom: 3px solid var(--color-h-primary, #deae54);
+    border-radius: 20%;
+}
+
+#tab-header-item3 {
+    color: var(--color-icon-main,#9b9b9b);
+    font-weight: bold;
+}
+
+.tab-content-panel-separator {
+    position: absolute;
+    display: block;
+    top: 20px;
+    left: 0px;
+    right: 0px;
+    z-index: 2;
+}
+
+.tab-content-panel-separator hr {
+    display: block;
+    height: 1px;
+    border: 0;
+    border-top: 1px solid var(--color-bg-accent,#171717);
+}
+
+.tab-content-panel-main {
+    position: absolute;
+    display: block;
+    bottom: 35px;
+    left: 30px;
+    right: 30px;
+    z-index: 3;
+    padding: 5px 2px;
+}
+
+.tab-content-panel-main p {
+    display: inline-block;
+    margin: 0;
+    padding: 0 6px;
+}
+
+.panel-main-item1 {
+    color: var(--color-h-secondary, #af8376);
+}
+
+.panel-main-item3 {
+    color: var(--color-h-primary, #deae54);
+    font-weight: bold;
+}
+
+/* Panel Dropdown Menu */
+.panel-dropdown-menu {
+    position: relative;
+    display: inline-block;
+    width: 390px;
+    color: var(--color-tx-primary,#c2c2c2);
+}
+
+    .panel-dropdown-menu select {
+        display: none; /*hide original SELECT element: */
+    }
+
+/*style menu item*/
+.select-selected {
+    background-color: var(--color-ddmenu-main, rgb(21,21,21,0.9));
+    border: 1px solid var(--color-bg-accent,#171717);
+    border-top-right-radius: 20px;
+    border-top-left-radius: 20px;
+    padding: 5px 10px 5px 15px;
+    cursor: pointer;
+    -webkit-box-shadow: 0px 1px 10px -2px var(--color-bg-accent,#171717);
+    -moz-box-shadow: 0px 1px 10px -2px var(--color-bg-accent,#171717);
+    box-shadow: 0px 1px 10px -2px var(--color-bg-accent,#171717);
+    letter-spacing: 1px;
+}
+
+/* Style chevron (before): */
+.select-selected:after {
+    content: "\f078";
+    font-family: "Font Awesome 5 Free";
+    font-weight: 900;
+    font-size: 18px;
+    color: var(--color-icon-main, #9b9b9b);
+    position: absolute;
+    top: 5px;
+    right: 15px;
+}
+
+/* Change chevron direction (active): */
+.select-selected.select-arrow-active:before {
+    content: " ";
+}
+
+.select-selected.select-arrow-active:after {
+    content: "\f077";
+    font-family: "Font Awesome 5 Free";
+    font-weight: 900;
+    position: absolute;
+}
+
+/* Style items (options): */
+.select-items {
+    position: absolute;
+    background-color: var(--color-ddmenu-item,rgb(36,36,36,0.8));
+    border-bottom-left-radius: 20px;
+    border-bottom-right-radius: 20px;
+    top: 100%;
+    left: 0;
+    right: 0;
+    z-index: 99;
+    -webkit-box-shadow: 0px 2px 14px -2px var(--color-bg-accent,#171717);
+    -moz-box-shadow: 0px 2px 14px -2px var(--color-bg-accent,#171717);
+    box-shadow: 0px 2px 14px -2px var(--color-bg-accent,#171717);
+}
+
+/* style the items (options): */
+.select-items div {
+    padding: 5px 10px 5px 15px;
+    border: 1px solid transparent;
+    cursor: pointer;
+    letter-spacing: 1px;
+}
+
+/* Hide the items when the select box is closed: */
+.select-hide {
+    display: none;
+}
+
+.select-items div:hover, .same-as-selected {
+    background-color: var(--color-ddmenu-hover,rgb(27,27,27,0.9));
+}
+
+.select-items div:hover:nth-child(7) {
+    border-bottom-left-radius: 20px;
+    border-bottom-right-radius: 20px;
+}
