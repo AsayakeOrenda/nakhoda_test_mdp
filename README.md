@@ -1,68 +1,28 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# nakhoda_test_mdp
+Repositary contains files for recreation of test page: https://raw.githubusercontent.com/llparaschiv/oneoff/0fbb44608d248876976c25fedd74a6a5df3fe267/t1.jpg
 
-## Available Scripts
+Notes on Files:
+There are three versions of the test recreation included in the repositary.
 
-In the project directory, you can run:
+1.  Separated version: HTML, CSS and JS are set up in separate files. Open - Test2_html-separate.html
+2.  Combined version: All html, css and js are within the same file. Open - Test3_all-in-one.html
+3.  React App attempt version: All remaining files: 'public' and 'src' folders + package-lock.json and package.json files. Hopefully provide the files needed for react app version of the test.
 
-### `npm start`
+Further notes on react app version: The react app was based off the original HTML/CSS version of the test-page. I've included comments within the app of any mayjor changes. I have also made comments within unfinished sections to discuss intended behaviour and/or problems encountered.
 
-Runs the app in the development mode.<br>
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+All react-app files which contain comments can be found in the 'src' folder. Complete list of files that include comments is as follows:
 
-The page will reload if you make edits.<br>
-You will also see any lint errors in the console.
+*  /src/script.js
+*  /src/style.css
+*  /src/App.js
+*  /src/Header.js
+*  /src/TabContentLayout.js
+*  /src/ToggleSwitch.js
 
-### `npm test`
+The react app was created using default facebook react git repository which can be found here:
+https://github.com/facebook/create-react-app
 
-Launches the test runner in the interactive watch mode.<br>
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `npm run build`
-
-Builds the app for production to the `build` folder.<br>
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.<br>
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (Webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
-
-### Analyzing the Bundle Size
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
-
-### Making a Progressive Web App
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
-
-### Advanced Configuration
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
-
-### Deployment
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
-
-### `npm run build` fails to minify
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+The app was created with the default name 'my-app' using:
+1. npx create-react-app my-app
+2. cd my-app
+3. npm start
