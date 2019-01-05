@@ -8,7 +8,8 @@ There are three versions of the test recreation included in the repositary.
 2.  Combined version: All html, css and js are within the same file. Open - Test3_all-in-one.html
 3.  React App attempt version: All remaining files: 'public' and 'src' folders + package-lock.json and package.json files. Hopefully this provides the files needed for the react app version of the test.
 
-Further notes on the react app version: The react app was based off the original HTML/CSS version of the test-page. I've included comments within the app of any major changes made in order to convert it. I have also made comments within unfinished sections to discuss intended behaviour and/or problems encountered.
+Further notes on the react app version:
+The react app was based off the original HTML/CSS version of the test-page. I've included comments within the app of any major changes made in order to convert it. I have also made comments within unfinished sections to discuss intended behaviour and/or problems encountered.
 
 All react-app files which contain comments can be found in the 'src' folder. Complete list of files that include comments is as follows:
 
