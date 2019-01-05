@@ -83,3 +83,13 @@ $(document).ready(() => {
         window.alert("Clicked Rem");
     }
 });
+
+/*Tab actions*/
+$(document).ready(() => { 
+    $(".tab-button").click(function() {
+        $(".tab-button").removeClass("active");
+        //removed the class from all tab-buttons
+        $(this).addClass("active");
+        //add the class to the clicked element
+    });
+});
